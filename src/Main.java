@@ -23,7 +23,7 @@ public class Main {
         System.out.println("¡Adivina la palabra de 5 letras!");
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
 
             String palabra = scanner.next();
 
