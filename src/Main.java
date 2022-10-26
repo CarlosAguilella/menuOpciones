@@ -1,14 +1,26 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("palabras"));
 
-        System.out.print("WORDLE");
+        int numero = new Random().nextInt(4750);
 
-        System.out.print("¡Adivina la palabra de 5 letras!");
+        String secreta = "";
 
-        String secreta = "manos";
+        for (int i = 0; i < numero; i++) {
+            secreta = scanner.nextLine();
+        }
+
+        scanner = new Scanner(System.in);
+
+
+        System.out.println("WORDLE");
+
+        System.out.println("¡Adivina la palabra de 5 letras!");
 
 
         for (int i = 0; i < 5; i++) {
@@ -17,6 +29,8 @@ public class Main {
 
             if (palabra.equals(secreta)) {
                 System.out.print("¡Eres un genio, has acertado la palabra!");
+            } else if ((i+1)==5) {
+                System.out.println("No has acertado, la palabra era: "+ secreta);
             } else {
                 if (palabra.charAt(0) == secreta.charAt(0)) {
                     System.out.print("\033[42m" + palabra.charAt(0) + "\033[0m");
@@ -62,5 +76,6 @@ public class Main {
                 System.out.println();
             }
         }
+
     }
 }
